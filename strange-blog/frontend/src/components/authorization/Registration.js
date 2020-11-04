@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from "./Input";
 import Button from "./Button";
-import './autorization.css'
+import './index.css'
 
 function Registration(){
     return (

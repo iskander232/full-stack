@@ -1,5 +1,5 @@
 import React from 'react'
-import './autorization.css'
+import './index.css'
 import Input from "./Input";
 import Button from "./Button";
 

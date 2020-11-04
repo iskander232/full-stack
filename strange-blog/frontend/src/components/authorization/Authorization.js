@@ -1,7 +1,7 @@
 import React from 'react'
 import LogIn from "./LogIn";
 import Registration from "./Registration";
-import './autorization.css'
+import './index.css'
 
 function Authorization() {
     return (
