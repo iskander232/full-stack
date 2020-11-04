@@ -1,0 +1,24 @@
+h1 {
+    text-align: center;
+}
+
+.autorization {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.autorization-elem {
+    display: flex;
+    flex-direction: column;
+    margin: 100vh;
+}
+
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 10vh;
+    height: 210px;
+}

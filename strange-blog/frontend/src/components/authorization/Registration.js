@@ -1,9 +1,17 @@
 import React from 'react'
-import LogIn from "./LogIn";
+import Input from "./Input";
+import Button from "./Button";
+import './autorization.css'
 
 function Registration(){
     return (
-        <div />
+        <div className="inputs">
+            <Input placeholder="Имя пользователя"/>
+            <Input type="email" placeholder="Почта"/>
+            <Input type="password" placeholder="Пароль"/>
+            <Input type="password" placeholder="Подтвердить пароль"/>
+            <Button>Зарегистрироваться</Button>
+        </div>
     );
 }
 
