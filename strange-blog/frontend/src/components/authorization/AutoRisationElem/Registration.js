@@ -6,16 +6,17 @@ import addUser from "../../redux/usersStore/addUser";
 
 function Registration(props) {
     const {usersStore, changeUser} = props;
-    const localUser = {
-        name: '',
-        mail: '',
-        password: '',
-        repeatPassword: '',
-        ready: false
+    let localUser = {
+        "name": '',
+        "mail": '',
+        "password": '',
+        "repeatPassword": '',
+        "ready": false
     };
 
     const changeHandler = event => {
-        localUser[event.target.name] = event.target.value;
+        const name = event.target.name;
+        localUser[name] = event.target.value;
     }
 
     const submitHandler = event => {
@@ -26,6 +27,7 @@ function Registration(props) {
             if (localUser.password === localUser.repeatPassword) {
                 addUser(usersStore);
                 localUser.ready = true;
+                console.log(localUser)
                 changeUser(localUser);
             }
         }
@@ -34,10 +36,10 @@ function Registration(props) {
     return (
         <div className="inputs">
             <h2>Зарегистрироваться</h2>
-            <Input placeholder="Имя пользователя" onChange={changeHandler}/>
-            <Input type="email" placeholder="Почта" onChange={changeHandler}/>
-            <Input type="password" placeholder="Пароль" onChange={changeHandler}/>
-            <Input type="password" placeholder="Подтвердить пароль"/>
+            <Input placeholder="Имя пользователя" name="name" onChange={changeHandler}/>
+            <Input type="email" placeholder="Почта" name="mail" onChange={changeHandler}/>
+            <Input type="password" placeholder="Пароль" name="password" onChange={changeHandler}/>
+            <Input type="password" placeholder="Подтвердить пароль" name="repeatPassword" onChange={changeHandler}/>
             <Button onClick={submitHandler} flag={false}>Зарегистрироваться</Button>
         </div>
     );

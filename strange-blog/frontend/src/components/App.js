@@ -5,7 +5,7 @@ import PostsPage from "./postsPage/PostsPage";
 
 function App() {
     const usersStore = createUsersStore([]);
-    const [user, changeUser] = useState({name: '', mail: '', password: '', ready: false})
+    const [user, changeUser] = useState({"name": '', "mail": '', "password": '', "ready": false})
     if (!user.ready) {
         return (
             <Authorization usersStore={usersStore} changeUser={changeUser}/>

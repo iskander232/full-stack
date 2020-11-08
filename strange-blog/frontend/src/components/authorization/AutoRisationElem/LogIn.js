@@ -6,10 +6,10 @@ import Button from "./Button/Button";
 function LogIn(props) {
     const {usersStore, changeUser} = props;
     const localUser = {
-        name: '',
-        mail: '',
-        password: '',
-        ready: false
+        "name": '',
+        "mail": '',
+        "password": '',
+        "ready": false
     }
 
     const changeHandler = event => {
@@ -31,9 +31,9 @@ function LogIn(props) {
     return (
         <div className="inputs">
             <h2>Войти</h2>
-            <Input placeholder="Имя пользователя" onChange={changeHandler}/>
-            <Input type="email" placeholder="Почта" onChange={changeHandler}/>
-            <Input type="password" placeholder="Пароль" onChange={changeHandler}/>
+            <Input placeholder="Имя пользователя" name="name" onChange={changeHandler}/>
+            <Input type="email" placeholder="Почта" name="mail" onChange={changeHandler}/>
+            <Input type="password" placeholder="Пароль" name="password" onChange={changeHandler}/>
             <Button onClick={submitHandler} updates="margin_top">Войти</Button>
         </div>
     );
