@@ -1,7 +1,7 @@
 import React from 'react'
-import LogIn from "./LogIn";
-import Registration from "./Registration";
-import './index.css'
+import LogIn from "./AutoRisationElem/LogIn";
+import Registration from "./AutoRisationElem/Registration";
+import './Autorization.css'
 
 function Authorization(props) {
     const {usersStore, changeUser} = props;
@@ -9,8 +9,8 @@ function Authorization(props) {
         <div>
             <h1>Авторизация</h1>
             <div className="autorization">
-                <LogIn className="autorization-elem" usersStore={usersStore} changeUser={changeUser}/>
-                <Registration className="autorization-elem" usersStore={usersStore} changeUser={changeUser}/>
+                <LogIn usersStore={usersStore} changeUser={changeUser}/>
+                <Registration usersStore={usersStore} changeUser={changeUser}/>
             </div>
         </div>
     );

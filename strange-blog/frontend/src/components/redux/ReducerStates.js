@@ -1,5 +1,6 @@
 const ReducerStates = {
-    addUser:'addUser'
+    addUser:'addUser',
+    addPost:'addPost'
 }
 
 export default ReducerStates

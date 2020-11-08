@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import styles from './index.css'
+import styles from './Button.css'
 
 export default function Button({children, updates, onClick}) {
 

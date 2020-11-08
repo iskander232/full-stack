@@ -1,8 +1,9 @@
 import {createStore} from 'redux';
 import reducer from "./reducer";
 
-function createUsersStore() {
+function createPostsStore() {
     return createStore(reducer, [])
+
 }
 
-export default createUsersStore;
+export default createPostsStore;

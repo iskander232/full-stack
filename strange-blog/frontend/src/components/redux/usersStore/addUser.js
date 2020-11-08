@@ -1,4 +1,3 @@
-import usersStore from "./createUsersStore";
 import ReducerStates from "../ReducerStates";
 
 function addUser(store, newUser) {

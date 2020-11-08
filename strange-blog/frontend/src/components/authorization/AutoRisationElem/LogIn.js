@@ -1,7 +1,7 @@
 import React from 'react'
-import './index.css'
-import Input from "./Input";
-import Button from "./Button";
+import './AutorisationElem.css'
+import Input from "./Input/Input";
+import Button from "./Button/Button";
 
 function LogIn(props) {
     const {usersStore, changeUser} = props;
