@@ -2,13 +2,14 @@ import React from 'react'
 import './index.css'
 import Input from "./Input";
 import Button from "./Button";
-import usersStore from "../redux/usersStore/usersStore";
 
-function LogIn() {
+function LogIn(props) {
+    const {usersStore, changeUser} = props;
     const localUser = {
         name: '',
         mail: '',
-        password: ''
+        password: '',
+        ready: false
     }
 
     const changeHandler = event => {
@@ -17,18 +18,23 @@ function LogIn() {
 
     const submitHandler = event => {
         const users = usersStore.getState()
-
-        if (users.some(user => user.name === localUser.name && user.password === localUser.password)) {
-            console.log("dsadsadsad");
+        if (users.some(
+            user =>
+                user.name === localUser.name &&
+                user.password === localUser.password &&
+                user.mail === localUser.mail)) {
+            localUser.ready = true;
+            changeUser(localUser)
         }
     }
 
     return (
         <div className="inputs">
+            <h2>Войти</h2>
             <Input placeholder="Имя пользователя" onChange={changeHandler}/>
             <Input type="email" placeholder="Почта" onChange={changeHandler}/>
             <Input type="password" placeholder="Пароль" onChange={changeHandler}/>
-            <Button onClick={submitHandler}>Войти</Button>
+            <Button onClick={submitHandler} updates="margin_top">Войти</Button>
         </div>
     );
 }

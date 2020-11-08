@@ -2,13 +2,9 @@ import React from 'react'
 import classnames from 'classnames'
 import styles from './index.css'
 
-export default function Button({children, primary, onClick}) {
-
-    const className = classnames(styles.button, {
-        [styles.primary]: !!primary
-    });
+export default function Button({children, updates, onClick}) {
 
     return (
-        <button className={className} onClick={onClick}>{children}</button>
+        <button className={updates} onClick={onClick}>{children}</button>
     )
 }

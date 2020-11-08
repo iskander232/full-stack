@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-function PostsPage(user) {
+function PostsPage(props) {
+    const {user} = props
     return (
         <h1>{user}</h1>
     )
