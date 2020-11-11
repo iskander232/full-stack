@@ -1,4 +1,4 @@
-button {
+.AutorizationButton {
     height: 4vh;
     width: 24vw;
     margin-top: 1vh;
@@ -9,17 +9,8 @@ button {
     color: #eae4e4;
 }
 
-button.error {
-    border: 1vmin solid #de8181;
-}
-
-button:focus {
+.AutorizationButton:focus {
     outline: none;
-}
-
-button::placeholder {
-    color: #000000;
-    text-align: center;
 }
 
 .margin_top {

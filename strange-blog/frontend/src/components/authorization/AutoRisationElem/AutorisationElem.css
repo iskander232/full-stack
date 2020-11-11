@@ -12,3 +12,8 @@
 h2{
     text-align: center;
 }
+
+h6 {
+    color: red;
+    font-size: medium;
+}

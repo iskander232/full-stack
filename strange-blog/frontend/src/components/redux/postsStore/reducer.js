@@ -2,7 +2,7 @@ import ReducerStates from "../ReducerStates";
 
 function reducer(state, action) {
     if (action.type === ReducerStates.addPost) {
-        return [...state, action.value];
+        return [action.value, ...state];
     }
     return state;
 }

@@ -1,0 +1,78 @@
+.PostsFilter{
+    width: 27vw;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #73cac2;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.TagsInput {
+    margin-top: 1vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #498565;
+    border-radius: 1vh;
+    height: 30vh;
+
+}
+
+
+.InputButtonTag {
+    margin-top: 1vh;
+    height: 3vh;
+    width: 23vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.InputTag {
+    width: 15vw;
+    border-radius: 1vmin;
+}
+
+.InputTag:focus {
+    outline: none;
+}
+
+.ButtonTag {
+    width: 5vw;
+    border-radius: 1vmin;
+}
+
+.ButtonTag:focus {
+    outline: none;
+}
+
+
+
+.TagAndButton{
+    height: 3vh;
+    width: 23vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1vmin;
+}
+
+.Tag {
+    width: 15vw;
+    text-align: center;
+    border-radius: 1vmin;
+    background-color: #72a6ba;
+    overflow: auto;
+}
+
+.TagsAll{
+    overflow: auto;
+}
+
+.postAddButton{
+    width: 10vw;
+    height: 4vh;
+    border-radius: 1vmin;
+    margin-top: 2vh;
+}

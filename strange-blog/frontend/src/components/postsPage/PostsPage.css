@@ -1,0 +1,20 @@
+.PostsPage {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 90vh;
+}
+
+.Head{
+    display: flex;
+    flex-direction: row;
+    height: 5vh;
+}
+
+.Hi{
+    margin-right: 80vw;
+}
+
+.LogOut{
+    margin: 1vh;
+}

@@ -1,0 +1,61 @@
+.PostsAdder {
+    width: 27vw;
+    height: 90vh;
+    border-radius: 2vmin;
+    background-color: #7ebc7e;
+    align-items: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+
+
+
+
+.postnameInput {
+    width: 23vw;
+    height: 3vh;
+    padding: 1vmin;
+    border-radius: 3vmin;
+}
+
+.postnameInput:focus {
+    outline: none;
+}
+
+
+
+
+.postcontentInput {
+    width: 23vw;
+    height: 30vh;
+    padding: 1vmin;
+    border-radius: 1vmin;
+    resize: none;
+}
+
+.postcontentInput:focus {
+    outline: none;
+}
+
+
+
+
+
+.postAddButton:focus {
+    outline: none;
+}
+
+.postAddButton {
+    height: 6vh;
+    border-radius: 3vmin;
+    background-color: #7fbc53;
+}
+
+h6{
+    color: #d71125;
+    padding: 1vmin;
+}

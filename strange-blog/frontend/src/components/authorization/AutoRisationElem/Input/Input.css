@@ -1,4 +1,4 @@
-input {
+.AutorizationInput {
     height: 4vh;
     width: 24vw;
     margin-top: 1vh;
@@ -9,15 +9,11 @@ input {
     color: #C4C4C4;
 }
 
-input.error {
-    border: 1vmin solid #de8181;
-}
-
-input:focus {
+.AutorizationInput:focus {
     outline: none;
 }
 
-input::placeholder {
+.AutorizationInput::placeholder {
     color: #CCBB24;
     text-align: center;
 }

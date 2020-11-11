@@ -1,19 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './AutorisationElem.css'
 import Input from "./Input/Input";
 import Button from "./Button/Button";
 
 function LogIn(props) {
     const {usersStore, changeUser} = props;
-    const localUser = {
+    const [localUser, changeLocalUser] = useState({
         "name": '',
         "mail": '',
         "password": '',
         "ready": false
-    }
+    })
+
+    const [errorMessage, changeError] = useState('')
 
     const changeHandler = event => {
-        localUser[event.target.name] = event.target.value;
+        let strangeUser = {...localUser}
+        strangeUser[event.target.name] = event.target.value;
+        changeLocalUser(strangeUser)
     }
 
     const submitHandler = event => {
@@ -25,6 +29,8 @@ function LogIn(props) {
                 user.mail === localUser.mail)) {
             localUser.ready = true;
             changeUser(localUser)
+        }else {
+            changeError('Введены некорректные данные')
         }
     }
 
@@ -35,6 +41,7 @@ function LogIn(props) {
             <Input type="email" placeholder="Почта" name="mail" onChange={changeHandler}/>
             <Input type="password" placeholder="Пароль" name="password" onChange={changeHandler}/>
             <Button onClick={submitHandler} updates="margin_top">Войти</Button>
+            <h6>{errorMessage}</h6>
         </div>
     );
 }
