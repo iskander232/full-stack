@@ -1,8 +1,8 @@
 import React from 'react'
-import './Button.css'
+import styles from './Button.module.css'
 
 export default function Button({children, updates, onClick}) {
     return (
-        <button className={updates + " AutorizationButton"} onClick={onClick}>{children}</button>
+        <button className={updates + " " + styles.AutorizationButton} onClick={onClick}>{children}</button>
     )
 }

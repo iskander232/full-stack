@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import PostsAdder from "./PostsAdder/PostsAdder";
 import PostsList from "./PostsList/PostsList";
 import PostsFilter from "./PostsFilter/PostsFilter";
-import './PostsPage.css'
+import styles from './PostsPage.module.css'
 
 function PostsPage(props) {
     const {user, postsStore, changeUser} = props
@@ -30,11 +30,11 @@ function PostsPage(props) {
     })
     return (
         <div>
-            <div className="Head">
-                <div className="Hi">{"Привет " + user.name}</div>
-                <button className="LogOut" onClick={LogOut}>Выйти</button>
+            <div className={styles.Head}>
+                <div className={styles.Hi}>{"Привет " + user.name}</div>
+                <button className={styles.LogOut} onClick={LogOut}>Выйти</button>
             </div>
-            <div className="PostsPage">
+            <div className={styles.PostsPage}>
                 <PostsAdder user={user} postsStore={postsStore}/>
                 <PostsList curPosts={curPosts}/>
                 <PostsFilter changeCurPosts={changeCurPosts} user={user}

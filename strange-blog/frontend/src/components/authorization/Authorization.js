@@ -1,14 +1,14 @@
 import React from 'react'
 import LogIn from "./AutoRisationElem/LogIn";
 import Registration from "./AutoRisationElem/Registration";
-import './Autorization.css'
+import styles from './Autorization.module.css'
 
 function Authorization(props) {
     const {usersStore, changeUser} = props;
     return (
         <div>
             <h1>Авторизация</h1>
-            <div className="autorization">
+            <div className={styles.autorization}>
                 <LogIn usersStore={usersStore} changeUser={changeUser}/>
                 <Registration usersStore={usersStore} changeUser={changeUser}/>
             </div>

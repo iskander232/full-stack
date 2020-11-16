@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Input from "./Input/Input";
 import Button from "./Button/Button";
-import './AutorisationElem.css'
+import styles from './AutorisationElem.module.css'
 import addUser from "../../redux/usersStore/addUser";
 
 function Registration(props) {
@@ -51,7 +51,7 @@ function Registration(props) {
     }
 
     return (
-        <div className="inputs">
+        <div className={styles.inputs}>
             <h2>Зарегистрироваться</h2>
             <Input placeholder="Имя пользователя" name="name" onChange={changeHandler}/>
             <Input type="mail" placeholder="Почта" name="mail" onChange={changeHandler}/>

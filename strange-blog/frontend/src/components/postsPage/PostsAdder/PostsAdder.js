@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './PostsAdder.css'
+import styles from './PostsAdder.module.css'
 import TagsInput from "./TagsInput/TagsInput";
 import addPost from "../../redux/postsStore/addPost";
 
@@ -45,13 +45,13 @@ function PostsAdder(props) {
     }
 
     return (
-        <div className="PostsAdder">
+        <div className={styles.PostsAdder}>
             <input name="postname" value={newPost.postname} placeholder="Название поста"
-                   onChange={changeHandler} className="postnameInput"/>
+                   onChange={changeHandler} className={styles.postnameInput}/>
             <textarea name="postcontent" value={newPost.postcontent} placeholder="Пост"
-                      onChange={changeHandler} className="postcontentInput"/>
+                      onChange={changeHandler} className={styles.postcontentInput}/>
             <TagsInput newPost={newPost} updateNewPost={updateNewPost}/>
-            <button placeholder="Добавить" className="postAddButton" onClick={submitChange}>
+            <button placeholder="Добавить" className={styles.postAddButton} onClick={submitChange}>
                 Добавить пост
             </button>
             <h6>{errorMessage}</h6>

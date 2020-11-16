@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './PostsFilter.css'
+import styles from './PostsFilter.module.css'
 
 function PostsFilter(props) {
     const {changeCurPosts, user, postsStore, changeTags, times, changeTimes} = props
@@ -35,23 +35,24 @@ function PostsFilter(props) {
     }
 
     return (
-        <div className="PostsFilter">
+        <div className={styles.PostsFilter}>
             <h2>Че-то отфильтровать</h2>
-            <div className="TagsInput">
-                <div className="InputButtonTag">
-                    <input className="InputTag" placeholder="новый тег" value={input}
+            <div className={styles.TagsInput}>
+                <div className={styles.InputButtonTag}>
+                    <input className={styles.InputTag} placeholder="новый тег" value={input}
                            onChange={changeHandler} onKeyPress={AddTag}/>
-                    <button className="ButtonTag" onClick={AddTagButton}>+</button>
+                    <button className={styles.ButtonTag} onClick={AddTagButton}>+</button>
                 </div>
-                <div className="TagsAll">
+                <div className={styles.TagsAll}>
                     {tags.map(tag =>
-                        <div className="TagAndButton" key={tag.key}>
-                            <div className="Tag">{tag.tag}</div>
-                            <button className="ButtonTag" key={tag.key} onClick={() => removeTag(tag.key)}>-</button>
+                        <div className={styles.TagAndButton} key={tag.key}>
+                            <div className={styles.Tag}>{tag.tag}</div>
+                            <button className={styles.ButtonTag} key={tag.key} onClick={() => removeTag(tag.key)}>-
+                            </button>
                         </div>)}
                 </div>
             </div>
-            <button placeholder="Добавить" className="postAddButton" onClick={submitChange}>Поменять фильтр</button>
+            <button placeholder="Добавить" className={styles.postAddButton} onClick={submitChange}>Поменять фильтр</button>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './TagsInput.css'
+import styles from './TagsInput.module.css'
 
 function TagsInput(props) {
     const {newPost, updateNewPost} = props;
@@ -34,17 +34,17 @@ function TagsInput(props) {
     }
 
     return (
-        <div className="TagsInput">
-            <div className="InputButtonTag">
-                <input className="InputTag" placeholder="новый тег" value={input}
+        <div className={styles.TagsInput}>
+            <div className={styles.InputButtonTag}>
+                <input className={styles.InputTag} placeholder="новый тег" value={input}
                        onChange={changeHandler} onKeyPress={AddTag}/>
-                <button className="ButtonTag" onClick={AddTagButton}>+</button>
+                <button className={styles.ButtonTag} onClick={AddTagButton}>+</button>
             </div>
-            <div className="TagsAll">
+            <div className={styles.TagsAll}>
                 {newPost.tags.map(tag =>
-                    <div className="TagAndButton" key={tag.key}>
-                        <div className="Tag">{tag.tag}</div>
-                        <button className="ButtonTag" key={tag.key} onClick={() => removeTag(tag.key)}>-</button>
+                    <div className={styles.TagAndButton} key={tag.key}>
+                        <div className={styles.Tag}>{tag.tag}</div>
+                        <button className={styles.ButtonTag} key={tag.key} onClick={() => removeTag(tag.key)}>-</button>
                     </div>)}
             </div>
         </div>

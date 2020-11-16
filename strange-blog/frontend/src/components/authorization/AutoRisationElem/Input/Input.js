@@ -1,9 +1,9 @@
 import React from 'react'
-import './Input.css'
+import styles from './Input.module.css'
 
 function Input({name, type, placeholder, onChange, value}) {
     return (
-        <input className="AutorizationInput"
+        <input className={styles.AutorizationInput}
                name={name}
                type={type}
                placeholder={placeholder}

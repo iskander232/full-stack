@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import './AutorisationElem.css'
+import styles from './AutorisationElem.module.css'
+import ButtonStyles from './Button/Button.module.css'
 import Input from "./Input/Input";
 import Button from "./Button/Button";
 
@@ -35,12 +36,12 @@ function LogIn(props) {
     }
 
     return (
-        <div className="inputs">
+        <div className={styles.inputs}>
             <h2>Войти</h2>
             <Input placeholder="Имя пользователя" name="name" onChange={changeHandler}/>
             <Input type="email" placeholder="Почта" name="mail" onChange={changeHandler}/>
             <Input type="password" placeholder="Пароль" name="password" onChange={changeHandler}/>
-            <Button onClick={submitHandler} updates="margin_top">Войти</Button>
+            <Button onClick={submitHandler} updates={ButtonStyles.margin_top}>Войти</Button>
             <h6>{errorMessage}</h6>
         </div>
     );
