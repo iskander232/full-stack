@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styles from './PostsAdder.module.css'
 import TagsInput from "./TagsInput/TagsInput";
-import addPost from "../../redux/postsStore/addPost";
+import addPost from "../../../redux/postsStore/addPost";
 
 function PostsAdder(props) {
     const {user, postsStore} = props;

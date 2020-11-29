@@ -3,14 +3,13 @@ import LogIn from "./AutoRisationElem/LogIn";
 import Registration from "./AutoRisationElem/Registration";
 import styles from './Autorization.module.css'
 
-function Authorization(props) {
-    const {usersStore, changeUser} = props;
+function Authorization() {
     return (
         <div>
             <h1>Авторизация</h1>
             <div className={styles.autorization}>
-                <LogIn usersStore={usersStore} changeUser={changeUser}/>
-                <Registration usersStore={usersStore} changeUser={changeUser}/>
+                <LogIn />
+                <Registration/>
             </div>
         </div>
     );

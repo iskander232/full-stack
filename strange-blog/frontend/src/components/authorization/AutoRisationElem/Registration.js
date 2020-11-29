@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Input from "./Input/Input";
 import Button from "./Button/Button";
 import styles from './AutorisationElem.module.css'
-import addUser from "../../redux/usersStore/addUser";
+import addUser from "../../../redux/usersStore/addUser";
 
 function Registration(props) {
     const {usersStore, changeUser} = props;
