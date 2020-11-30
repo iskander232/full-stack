@@ -9,14 +9,14 @@ function PostsPage(props) {
     const [tags, changeTags] = useState([])
     const [times, changeTimes] = useState({"min": 0, "max": 3005111830404})
     const LogOut = () => changeUser({
-            "name": '', "mail": '', "password": '', "ready": false
+            "login": '', "mail": '', "password": '', "ready": false
         }
     )
 
     const [curPosts, changeCurPosts] = useState(
         postsStore.getState().filter(post => post.post.timestamp <= times.max &&
             post.post.timestamp >= times.min &&
-            tags.every(value => post.post.tags.some(a => a.tag === value.tag)) && user.name === post.user.name
+            tags.every(value => post.post.tags.some(a => a.tag === value.tag)) && user.login === post.user.login
         )
     )
 
@@ -24,14 +24,14 @@ function PostsPage(props) {
     postsStore.subscribe(() => {
         const newState = postsStore.getState().filter(post => post.post.timestamp <= times.max &&
             post.post.timestamp >= times.min &&
-            tags.every(value => post.post.tags.some(a => a.tag === value.tag)) && user.name === post.user.name
+            tags.every(value => post.post.tags.some(a => a.tag === value.tag)) && user.login === post.user.login
         )
         changeCurPosts(newState)
     })
     return (
         <div>
             <div className={styles.Head}>
-                <div className={styles.Hi}>{"Привет " + user.name}</div>
+                <div className={styles.Hi}>{"Привет " + user.login}</div>
                 <button className={styles.LogOut} onClick={LogOut}>Выйти</button>
             </div>
             <div className={styles.PostsPage}>

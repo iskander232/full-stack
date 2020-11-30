@@ -9,7 +9,7 @@ function PostsFilter(props) {
         changeTags(tags);
         changeCurPosts(postsStore.getState().filter(post => post.post.timestamp <= times.max &&
             post.post.timestamp >= times.min &&
-            tags.every(value => post.post.tags.some(a => a.tag === value.tag)) && user.name === post.user.name
+            tags.every(value => post.post.tags.some(a => a.tag === value.tag)) && user.login === post.user.login
         ))
     }
     const [input, changeInput] = useState('')
