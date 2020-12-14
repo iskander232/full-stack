@@ -1,8 +1,11 @@
 package org.example.backend.database.domain;
 
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Data
@@ -12,6 +15,10 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+
+    @NonNull
     private String login;
     @NonNull
     private String password;
@@ -20,10 +27,4 @@ public class User {
 
     @OneToMany
     private Set<Post> posts;
-
-    public User(String login, String password, String mail){
-        this.login = login;
-        this.mail = mail;
-        this.password = password;
-    }
 }

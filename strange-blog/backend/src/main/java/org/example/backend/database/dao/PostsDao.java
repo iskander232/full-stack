@@ -11,19 +11,14 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 public class PostsDao {
-    private PostsRepository postsRepository;
-    private UsersRepository usersRepository;
+    private final PostsRepository postsRepository;
 
-    boolean addPost(Post post) {
-        if (usersRepository.findByLogin(post.getLogin()).size() == 0) {
-            return false;
-        }
-
+    public boolean addPost(Post post) {
         postsRepository.save(post);
         return true;
     }
 
-    Set<Post> getPostsByLogin(String login){
+    public Set<Post> getPostsByLogin(String login){
         return postsRepository.findByLogin(login);
     }
 }

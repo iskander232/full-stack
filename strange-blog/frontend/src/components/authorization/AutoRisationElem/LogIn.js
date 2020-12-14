@@ -4,6 +4,7 @@ import ButtonStyles from './Button/Button.module.css'
 import Input from "./Input/Input";
 import Button from "./Button/Button";
 import {serverPath} from "../../../serverConf/server";
+import http from "../../../helpers/http";
 
 function LogIn(props) {
     const {changeUser} = props;
@@ -34,23 +35,16 @@ function LogIn(props) {
         // }else {
         //     changeError('Введены некорректные данные')
         // }
-        fetch(serverPath + "/login", {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(
-                {"login": localUser.login, "mail": localUser.mail, "password": localUser.password}
-            )
-        }).then(response => {
-            if (response.ok){
+        http(
+            serverPath + "/login?username=" + localUser.login + "&password=" + localUser.password,
+            'POST',
+            {},
+            response => {
                 localUser.ready = true;
                 changeUser(localUser);
-            } else {
-                changeError('Введены некорректные данные');
-            }
-        });
+            },
+            response => changeError(response.message)
+        )
     }
 
     return (

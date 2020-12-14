@@ -1,1 +1,1 @@
-export const serverPath = "http://localhost:8080/blog"
+export const serverPath = "http://localhost:8080"

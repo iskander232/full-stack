@@ -3,6 +3,7 @@ import Input from "./Input/Input";
 import Button from "./Button/Button";
 import styles from './AutorisationElem.module.css'
 import {serverPath} from "../../../serverConf/server";
+import http from "../../../helpers/http";
 
 function Registration(props) {
     const {changeUser} = props;
@@ -40,23 +41,24 @@ function Registration(props) {
             return;
         }
 
-        fetch(serverPath + "/registration", {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+        http(
+            serverPath + "/registration",
+            'POST',
+            {"login": localUser.login, "mail": localUser.mail, "password": localUser.password},
+            response => {
+                http(
+                    serverPath + "/login?username=" + localUser.login + "&password=" + localUser.password,
+                    'POST',
+                    {},
+                    response => {
+                        localUser.ready = true;
+                        changeUser(localUser);
+                    },
+                    response => changeError(response.message)
+                )
             },
-            body: JSON.stringify(
-                {"login": localUser.login, "mail": localUser.mail, "password": localUser.password}
-            )
-        }).then(response => {
-            if (response.ok){
-                localUser.ready = true;
-                changeUser(localUser);
-            } else {
-                changeError("Такой логин уже существует");
-            }
-        });
+            response => changeError(response.message)
+        )
     }
 
     return (
