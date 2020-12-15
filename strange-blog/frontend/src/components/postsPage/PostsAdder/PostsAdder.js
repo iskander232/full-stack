@@ -2,14 +2,18 @@ import React, {useState} from 'react'
 import styles from './PostsAdder.module.css'
 import TagsInput from "./TagsInput/TagsInput";
 import addPost from "../../../redux/postsStore/addPost";
+import http from "../../../helpers/http";
+import {serverPath} from "../../../serverConf/server";
+import ReducerStates from "../../../redux/ReducerStates";
 
 function PostsAdder(props) {
-    const {user, postsStore} = props;
+    const {user, postsStore, store} = props;
     const today = new Date();
 
     const [newPost, updateNewPost] = useState({
-        "postname": '',
-        "postcontent": '',
+        "login": user.login,
+        "postTitle": '',
+        "postContent": '',
         "tags": [],
         "date": today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate(),
         "timestamp": Date.now()
@@ -25,19 +29,21 @@ function PostsAdder(props) {
     }
 
     const submitChange = event => {
-        if (newPost.postname.length < 3) {
+        if (newPost.postTitle.length < 3) {
             changeErrorMessage('Слишком короткое название');
             return;
         }
-        if (newPost.postcontent.length < 3) {
+        if (newPost.postContent.length < 3) {
             changeErrorMessage('Слишком мало текста');
             return;
         }
-        addPost(postsStore, {"user": user, "post": newPost});
+
+        newPost.tags = JSON.stringify(newPost.tags)
+        addPost(store, newPost)
 
         updateNewPost({
-            "postname": '',
-            "postcontent": '',
+            "postTitle": '',
+            "postContent": '',
             "tags": [],
             "date": today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate(),
             "timestamp": Date.now()
@@ -46,9 +52,9 @@ function PostsAdder(props) {
 
     return (
         <div className={styles.PostsAdder}>
-            <input name="postname" value={newPost.postname} placeholder="Название поста"
+            <input name="postTitle" value={newPost.postTitle} placeholder="Название поста"
                    onChange={changeHandler} className={styles.postnameInput}/>
-            <textarea name="postcontent" value={newPost.postcontent} placeholder="Пост"
+            <textarea name="postContent" value={newPost.postContent} placeholder="Пост"
                       onChange={changeHandler} className={styles.postcontentInput}/>
             <TagsInput newPost={newPost} updateNewPost={updateNewPost}/>
             <button placeholder="Добавить" className={styles.postAddButton} onClick={submitChange}>

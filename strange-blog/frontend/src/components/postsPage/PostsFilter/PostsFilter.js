@@ -2,14 +2,13 @@ import React, {useState} from 'react'
 import styles from './PostsFilter.module.css'
 
 function PostsFilter(props) {
-    const {changeCurPosts, user, postsStore, changeTags, times, changeTimes} = props
+    const {changeCurPosts, user, store, changeTags} = props
     const [tags, changeCurTags] = useState([])
 
     const submitChange = event => {
         changeTags(tags);
-        changeCurPosts(postsStore.getState().filter(post => post.post.timestamp <= times.max &&
-            post.post.timestamp >= times.min &&
-            tags.every(value => post.post.tags.some(a => a.tag === value.tag)) && user.name === post.user.name
+        changeCurPosts(store.getState().filter(post => tags.every(value =>
+            post.tags.some(a => a.tag === value.tag))
         ))
     }
     const [input, changeInput] = useState('')
@@ -52,7 +51,8 @@ function PostsFilter(props) {
                         </div>)}
                 </div>
             </div>
-            <button placeholder="Добавить" className={styles.postAddButton} onClick={submitChange}>Поменять фильтр</button>
+            <button placeholder="Добавить" className={styles.postAddButton} onClick={submitChange}>Поменять фильтр
+            </button>
         </div>
     )
 }

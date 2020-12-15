@@ -6,8 +6,8 @@ function PostItem(props) {
 
     return (
         <div className={styles.PostItem}>
-            <div className={styles.TitleItem}>{post.postname}</div>
-            <div className={styles.ContentItem}>{post.postcontent}</div>
+            <div className={styles.TitleItem}>{post.postTitle}</div>
+            <div className={styles.ContentItem}>{post.postContent}</div>
             <div className={styles.TagsAndDate}>
                 <div className={styles.TagsItem}>
                     {post.tags.map(tag => <div className={styles.TagInItem} key={tag.key}>{tag.tag}</div>)}
