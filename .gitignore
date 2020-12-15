@@ -22,3 +22,38 @@
 *npm-debug.log*
 *yarn-debug.log*
 *yarn-error.log*
+
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+strange-blog/backend/.apt_generated
+strange-blog/backend/..classpath
+strange-blog/backend/.mvn.factorypath
+strange-blog/backend/..project
+strange-blog/backend/..settings
+strange-blog/backend/..springBeans
+strange-blog/backend/.sts4-cache
+#
+#### IntelliJ IDEA ###
+strange-blog/backend/.idea
+*.iws
+*.iml
+*.ipr
+#
+#### NetBeans ###
+strange-blog/backend/nbproject/private/
+strange-blog/backend/nbbuild/
+strange-blog/backend/dist/
+strange-blog/backend/nbdist/
+strange-blog/backend/.nb-gradle/
+#build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+#
+#### VS Code ###
+.vscode/
+#
