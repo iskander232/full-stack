@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import styles from './PostsFilter.module.css'
 
 function PostsFilter(props) {
-    const {changeCurPosts, user, store, changeTags} = props
+    const {changeCurPosts, store, changeTags} = props
     const [tags, changeCurTags] = useState([])
 
     const submitChange = event => {

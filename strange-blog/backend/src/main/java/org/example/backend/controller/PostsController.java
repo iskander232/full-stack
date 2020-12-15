@@ -19,6 +19,7 @@ public class PostsController {
     @PostMapping("/posts/add")
     public ResponseEntity<String> addPost(@RequestBody Post post) {
         postsService.addPost(post);
+        System.out.println(post);
         return ResponseEntity.ok("{}");
     }
 

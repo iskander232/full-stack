@@ -12,8 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @SpringBootTest()
 class PostsServiceTest {
@@ -32,11 +31,10 @@ class PostsServiceTest {
     @Test
     void getPostsByLogin() {
         Post a = new Post();
-        Set<Post> x = new HashSet<>();
-        x.add(a);
+        List<Post> x = Collections.singletonList(a);
 
         Mockito.when(postsRepository.findByLogin("a")).thenReturn(x);
-        Mockito.when(postsRepository.findByLogin("b")).thenReturn(new HashSet<>());
+        Mockito.when(postsRepository.findByLogin("b")).thenReturn(new ArrayList<>());
 
 
         assertThat("a", postsService.getPostsByLogin("a").size(), equalTo(1));

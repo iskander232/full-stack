@@ -9,7 +9,6 @@ function App() {
     const [postsStore, __] = useState(createPostsStore())
 
     const [user, changeUser] = useState({
-            // "login": 'Abacaba', "mail": 'abacaba', "password": 'abacaba', "ready": true
         }
     )
 
