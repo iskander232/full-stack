@@ -1,5 +1,6 @@
 language: java
-jdk:
-    - openjdk11
+install:
+    - mvn package -f strange-blog/backend
 script:
-    - ./strange-blog/backend/mvnw clean install
+    - mvn test -f strange-blog/backend
+
