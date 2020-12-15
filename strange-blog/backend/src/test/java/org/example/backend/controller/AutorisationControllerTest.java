@@ -31,14 +31,11 @@ class AutorisationControllerTest {
     public void RegistrationCheck() throws Exception {
         assertThat(autorisationController).isNotNull();
 
-        User user = new User();
-        user.setLogin("user");
-        user.setPassword("pass");
-        String userJson = "{\"login\": \"1\", \"password\": \"1\"}";
-
         mockMvc.perform(post("/registration")
-                .contentType(APPLICATION_JSON_UTF8).content(userJson))
-                .andDo(print()).andExpect(status().isOk());
+                .contentType(APPLICATION_JSON_UTF8).content("{\"login\": \"1\", \"password\": \"1\"}"))
+                .andDo(print());
+
+        mockMvc.perform(post("/login?1:1")).andExpect(status().isOk());
     }
 
     @Test
