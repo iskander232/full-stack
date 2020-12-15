@@ -1,6 +1,6 @@
 language: java
 jdk:
-    - openjdk11
+    - openjdk12
 install:
     - mvn package -f strange-blog/backend
 script:
