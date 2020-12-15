@@ -1,38 +1,34 @@
 package org.example.backend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.backend.database.dao.PostsDao;
-import org.example.backend.database.domain.Post;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.example.backend.service.PostsService;
+import org.example.backend.model.Post;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 
 @RestController
 @RequiredArgsConstructor
 public class PostsController {
-    private final PostsDao postsDao;
+    private final PostsService postsService;
 
     @PostMapping("/posts/add")
     public ResponseEntity<String> addPost(@RequestBody Post post) {
-        postsDao.addPost(post);
+        postsService.addPost(post);
         return ResponseEntity.ok("{}");
     }
 
     @GetMapping("/posts/get")
     public ResponseEntity<String> getAllPosts(Principal principal) {
-        if (postsDao.getPostsByLogin(principal.getName()).size() == 0) {
+        if (postsService.getPostsByLogin(principal.getName()).size() == 0) {
             return ResponseEntity.ok("[]");
         }
 
-        List<Post> posts = new ArrayList<>(postsDao.getPostsByLogin(principal.getName()));
+        List<Post> posts = new ArrayList<>(postsService.getPostsByLogin(principal.getName()));
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for (int i = 0; i < posts.size(); ++i) {

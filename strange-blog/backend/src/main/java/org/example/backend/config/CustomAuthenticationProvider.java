@@ -1,6 +1,6 @@
 package org.example.backend.config;
 
-import org.example.backend.database.dao.UsersService;
+import org.example.backend.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

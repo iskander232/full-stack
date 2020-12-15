@@ -1,4 +1,4 @@
-package org.example.backend.database.domain;
+package org.example.backend.model;
 
 import lombok.*;
 

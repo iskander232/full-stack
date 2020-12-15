@@ -1,6 +1,6 @@
-package org.example.backend.database;
+package org.example.backend.repository;
 
-import org.example.backend.database.domain.User;
+import org.example.backend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

@@ -1,15 +1,9 @@
-package org.example.backend.database.dao;
+package org.example.backend.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.backend.database.UsersRepository;
-import org.example.backend.database.domain.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.example.backend.repository.UsersRepository;
+import org.example.backend.model.User;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @Service
 @RequiredArgsConstructor

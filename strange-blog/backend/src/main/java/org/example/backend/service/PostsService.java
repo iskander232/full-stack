@@ -1,16 +1,15 @@
-package org.example.backend.database.dao;
+package org.example.backend.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.backend.database.PostsRepository;
-import org.example.backend.database.UsersRepository;
-import org.example.backend.database.domain.Post;
+import org.example.backend.repository.PostsRepository;
+import org.example.backend.model.Post;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
-public class PostsDao {
+public class PostsService {
     private final PostsRepository postsRepository;
 
     public boolean addPost(Post post) {
