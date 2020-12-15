@@ -1,6 +1,6 @@
 import ReducerStates from "../ReducerStates";
-import {serverPath} from "../../../serverConf/server";
-import http from "../../../helpers/http";
+import {serverPath} from "../../serverConf/server";
+import http from "../../helpers/http";
 
 function addPost(store, newPost) {
     http(serverPath + "/posts/add", 'POST', newPost,

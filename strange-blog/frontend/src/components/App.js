@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
+import updatePosts from "../redux/postsStore/updatePosts";
+import createPostsStore from "../redux/postsStore/createPostsStore";
 import Authorization from "./authorization/Authorization";
 import PostsPage from "./postsPage/PostsPage";
-import createPostsStore from "./redux/postsStore/CreatePostsStore";
-import {connect, Provider} from "react-redux";
-import updatePosts from "./redux/postsStore/updatePosts";
 import {serverPath} from "../serverConf/server";
 
 function App() {

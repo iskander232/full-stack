@@ -1,4 +1,4 @@
-import http from "../../../helpers/http";
+import http from "../../helpers/http";
 import ReducerStates from "../ReducerStates";
 
 function updatePosts(store, postsPath) {

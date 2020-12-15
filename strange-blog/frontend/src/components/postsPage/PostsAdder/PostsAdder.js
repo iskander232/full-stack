@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import styles from './PostsAdder.module.css'
 import TagsInput from "./TagsInput/TagsInput";
-import addPost from "../../redux/postsStore/addPost";
+import addPost from "../../../redux/postsStore/addPost";
 import http from "../../../helpers/http";
 import {serverPath} from "../../../serverConf/server";
-import ReducerStates from "../../redux/ReducerStates";
+import ReducerStates from "../../../redux/ReducerStates";
 
 function PostsAdder(props) {
     const {user, postsStore, store} = props;
