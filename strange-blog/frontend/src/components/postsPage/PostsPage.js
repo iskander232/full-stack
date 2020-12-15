@@ -3,42 +3,39 @@ import PostsAdder from "./PostsAdder/PostsAdder";
 import PostsList from "./PostsList/PostsList";
 import PostsFilter from "./PostsFilter/PostsFilter";
 import styles from './PostsPage.module.css'
+import updatePosts from "../../redux/postsStore/updatePosts";
+import http from "../../helpers/http";
+import {serverPath} from "../../serverConf/server"
+import {connect} from "react-redux";
 
 function PostsPage(props) {
-    const {user, postsStore, changeUser} = props
+    const {user, changeUser, store} = props
     const [tags, changeTags] = useState([])
-    const [times, changeTimes] = useState({"min": 0, "max": 3005111830404})
-    const LogOut = () => changeUser({
-            "name": '', "mail": '', "password": '', "ready": false
-        }
-    )
+
+    const LogOut = () => changeUser({"login": '', "mail": '', "password": '', "ready": false})
 
     const [curPosts, changeCurPosts] = useState(
-        postsStore.getState().filter(post => post.post.timestamp <= times.max &&
-            post.post.timestamp >= times.min &&
-            tags.every(value => post.post.tags.some(a => a.tag === value.tag)) && user.name === post.user.name
-        )
+        store.getState().filter(post => post.tags.every(value => post.tags.some(a => a.tag === value.tag)))
     )
 
-
-    postsStore.subscribe(() => {
-        const newState = postsStore.getState().filter(post => post.post.timestamp <= times.max &&
-            post.post.timestamp >= times.min &&
-            tags.every(value => post.post.tags.some(a => a.tag === value.tag)) && user.name === post.user.name
+    store.subscribe(() => {
+        const newState = store.getState().filter(post => tags.every(
+            value => post.tags.some(a => a.tag === value.tag))
         )
         changeCurPosts(newState)
     })
+
     return (
         <div>
             <div className={styles.Head}>
-                <div className={styles.Hi}>{"Привет " + user.name}</div>
+                <div className={styles.Hi}>{"Привет " + user.login}</div>
                 <button className={styles.LogOut} onClick={LogOut}>Выйти</button>
             </div>
             <div className={styles.PostsPage}>
-                <PostsAdder user={user} postsStore={postsStore}/>
+                <PostsAdder user={user} store={store}/>
                 <PostsList curPosts={curPosts}/>
                 <PostsFilter changeCurPosts={changeCurPosts} user={user}
-                             postsStore={postsStore} changeTags={changeTags} times={times} changeTimes={changeTimes}/>
+                             store={store} changeTags={changeTags}/>
             </div>
         </div>
     )

@@ -2,12 +2,13 @@ import React, {useState} from 'react'
 import Input from "./Input/Input";
 import Button from "./Button/Button";
 import styles from './AutorisationElem.module.css'
-import addUser from "../../../redux/usersStore/addUser";
+import {serverPath} from "../../../serverConf/server";
+import http from "../../../helpers/http";
 
 function Registration(props) {
-    const {usersStore, changeUser} = props;
+    const {changeUser} = props;
     const [localUser, changeLocalUser] = useState({
-        "name": '',
+        "login": '',
         "mail": '',
         "password": '',
         "repeatPassword": '',
@@ -23,12 +24,7 @@ function Registration(props) {
     }
 
     const submitHandler = event => {
-        const users = usersStore.getState();
-        if (users.some(user => user.name === localUser.name)) {
-            changeError('Пользователь с таким ником уже есть')
-            return;
-        }
-        if (localUser.name.length < 3) {
+        if (localUser.login.length < 3) {
             changeError('Слишком короткое имя')
             return;
         }
@@ -36,7 +32,7 @@ function Registration(props) {
             changeError('Плохая почта')
             return;
         }
-        if (localUser.password.length < 7){
+        if (localUser.password.length < 7) {
             changeError('Короткий пароль')
             return;
         }
@@ -45,15 +41,30 @@ function Registration(props) {
             return;
         }
 
-        addUser(usersStore, localUser);
-        localUser.ready = true;
-        changeUser(localUser);
+        http(
+            serverPath + "/registration",
+            'POST',
+            {"login": localUser.login, "mail": localUser.mail, "password": localUser.password},
+            response => {
+                http(
+                    serverPath + "/login?username=" + localUser.login + "&password=" + localUser.password,
+                    'POST',
+                    {},
+                    response => {
+                        localUser.ready = true;
+                        changeUser(localUser);
+                    },
+                    response => changeError(response.message)
+                )
+            },
+            response => changeError(response.message)
+        )
     }
 
     return (
         <div className={styles.inputs}>
             <h2>Зарегистрироваться</h2>
-            <Input placeholder="Имя пользователя" name="name" onChange={changeHandler}/>
+            <Input placeholder="Имя пользователя" name="login" onChange={changeHandler}/>
             <Input type="mail" placeholder="Почта" name="mail" onChange={changeHandler}/>
             <Input type="password" placeholder="Пароль" name="password" onChange={changeHandler}/>
             <Input type="password" placeholder="Подтвердить пароль" name="repeatPassword" onChange={changeHandler}/>

@@ -7,7 +7,7 @@ function PostsList(props) {
 
     return (
         <div className={styles.PostsList}>
-            {curPosts.map(post => <PostItem key={post.post.timestamp} post={post.post}/>)}
+            {curPosts.map(post => <PostItem key={post.timestamp} post={post}/>)}
         </div>
     )
 }
