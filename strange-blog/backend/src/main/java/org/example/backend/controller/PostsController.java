@@ -25,7 +25,7 @@ public class PostsController {
 
     @GetMapping("/posts/get")
     public ResponseEntity<String> getAllPosts(Principal principal) {
-        if (postsService.getPostsByLogin(principal.getName()).size() == 0) {
+        if (null == postsService.getPostsByLogin(principal.getName()) || postsService.getPostsByLogin(principal.getName()).size() == 0) {
             return ResponseEntity.ok("[]");
         }
 
