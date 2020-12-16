@@ -1,5 +1,4 @@
 export default function http(path, method, body = {}, correct, uncorrect) {
-    console.log(JSON.stringify(body))
      fetch(path, {
         method: method,
         body: Object.keys(body).length === 0 ? null : JSON.stringify(body),
