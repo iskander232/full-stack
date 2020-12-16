@@ -1,1 +1,1 @@
-export const serverPath = "http://localhost:8080"
+export const serverPath = "http://130.193.40.80:8080"

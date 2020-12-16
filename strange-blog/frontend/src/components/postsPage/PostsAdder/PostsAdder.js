@@ -25,16 +25,21 @@ function PostsAdder(props) {
     }
 
     const submitChange = event => {
-        if (newPost.postTitle.length < 3) {
-            changeErrorMessage('Слишком короткое название');
+        if (newPost.postTitle.length < 3 || newPost.postTitle.length > 100) {
+            changeErrorMessage('Название - от 3 до 100 символов');
             return;
         }
-        if (newPost.postContent.length < 3) {
-            changeErrorMessage('Слишком мало текста');
+        if (newPost.postContent.length < 3 || newPost.postContent.length > 220) {
+            changeErrorMessage('Содержание поста от 3 до 220 символов');
             return;
         }
 
         newPost.tags = JSON.stringify(newPost.tags)
+
+        if (newPost.tags.length > 220) {
+            changeErrorMessage('суммарная длина тегов - до 100 символов');
+            return;
+        }
         addPost(store, newPost)
 
         updateNewPost({

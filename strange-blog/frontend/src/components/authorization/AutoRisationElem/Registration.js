@@ -24,16 +24,16 @@ function Registration(props) {
     }
 
     const submitHandler = event => {
-        if (localUser.login.length < 3) {
-            changeError('Слишком короткое имя')
+        if (localUser.login.length < 3 || localUser.login.length > 20) {
+            changeError('Имя - от 3 до 20 символов')
             return;
         }
-        if (localUser.mail.length < 3) {
-            changeError('Плохая почта')
+        if (localUser.mail.length > 100) {
+            changeError('Почта - не более 100 символов')
             return;
         }
-        if (localUser.password.length < 7) {
-            changeError('Короткий пароль')
+        if (localUser.password.length < 7 || localUser.password.length > 100) {
+            changeError('Пароль - от 7 до 100 символов')
             return;
         }
         if (localUser.password !== localUser.repeatPassword) {
