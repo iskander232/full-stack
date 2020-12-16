@@ -1,11 +1,17 @@
 version: "3"
 
+volumes:
+  storage:
+
 services:
   backend:
     build: backend/
     restart: always
     ports:
       - 8080:8080
+    volumes:
+      - storage:/application/src/main/resources
+    
   frontend:
     build: frontend/
     restart: always
