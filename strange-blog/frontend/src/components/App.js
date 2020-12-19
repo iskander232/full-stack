@@ -4,19 +4,21 @@ import createPostsStore from "../redux/postsStore/createPostsStore";
 import Authorization from "./authorization/Authorization";
 import PostsPage from "./postsPage/PostsPage";
 import {serverPath} from "../serverConf/server";
+import getCookie from "../helpers/getCookie";
+import setCookie from "../helpers/setCookie";
 
 function App() {
     const [postsStore, __] = useState(createPostsStore())
 
-    const [user, changeUser] = useState({
-        }
+    const [user, changeUser] = useState({}
     )
 
-    if (!user.ready) {
+    if (!user.ready && (getCookie("login") == null || getCookie("login").length < 5)) {
         return (
             <Authorization changeUser={changeUser}/>
         );
     } else {
+        setCookie("login", user.login)
         updatePosts(postsStore, serverPath + "/posts/get");
         return (
             <PostsPage user={user} store={postsStore} changeUser={changeUser}/>

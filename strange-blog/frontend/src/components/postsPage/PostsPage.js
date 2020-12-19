@@ -3,12 +3,16 @@ import PostsAdder from "./PostsAdder/PostsAdder";
 import PostsList from "./PostsList/PostsList";
 import PostsFilter from "./PostsFilter/PostsFilter";
 import styles from './PostsPage.module.css'
+import deleteCookie from "../../helpers/deleteCookie";
 
 function PostsPage(props) {
     const {user, changeUser, store} = props
     const [tags, changeTags] = useState([])
 
-    const LogOut = () => changeUser({"login": '', "mail": '', "password": '', "ready": false})
+    const LogOut = () => {
+        deleteCookie("login");
+        changeUser({"login": '', "mail": '', "password": '', "ready": false});
+    }
 
     const [curPosts, changeCurPosts] = useState(
         store.getState().filter(post => post.tags.every(value => post.tags.some(a => a.tag === value.tag)))
