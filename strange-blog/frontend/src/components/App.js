@@ -10,14 +10,23 @@ import setCookie from "../helpers/setCookie";
 function App() {
     const [postsStore, __] = useState(createPostsStore())
 
-    const [user, changeUser] = useState({}
-    )
+    const [user, changeUser] = useState({
+        "login": '',
+        "mail": '',
+        "password": '',
+        "repeatPassword": '',
+        "ready": false
+    })
 
     if (!user.ready && (getCookie("login") == null || getCookie("login").length < 5)) {
         return (
             <Authorization changeUser={changeUser}/>
         );
     } else {
+        if (user.login === "") {
+            changeUser({"login": getCookie("login"), "ready": true})
+        }
+
         setCookie("login", user.login)
         updatePosts(postsStore, serverPath + "/posts/get");
         return (
